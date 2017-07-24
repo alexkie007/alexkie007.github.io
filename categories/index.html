@@ -3,22 +3,16 @@
 <head>
     <meta charset="utf-8">
     
-    <title>搭建博客 | 技术栈</title>
+    <title>Categories | 技术栈</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="环境配置 Node.js  brew install node  Git  安装Hexo npm install -g hexo 初始化hexo init 生成静态页面hexo g 本地启动hexo server现在打开http://localhost:4000就可以访问了配置GitHub 建立Repository建立与用户名对应的仓库，仓库名必须为github的用户名.github.io，比如我">
-<meta name="keywords" content="Hexo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="搭建博客">
-<meta property="og:url" content="http://yoursite.com/2017/07/23/搭建博客/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Categories">
+<meta property="og:url" content="http://yoursite.com/categories/index.html">
 <meta property="og:site_name" content="技术栈">
-<meta property="og:description" content="环境配置 Node.js  brew install node  Git  安装Hexo npm install -g hexo 初始化hexo init 生成静态页面hexo g 本地启动hexo server现在打开http://localhost:4000就可以访问了配置GitHub 建立Repository建立与用户名对应的仓库，仓库名必须为github的用户名.github.io，比如我">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://otkonjtde.bkt.clouddn.com/salt-lake.jpg">
-<meta property="og:updated_time" content="2017-07-24T02:47:11.000Z">
+<meta property="og:updated_time" content="2017-07-23T14:42:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建博客">
-<meta name="twitter:description" content="环境配置 Node.js  brew install node  Git  安装Hexo npm install -g hexo 初始化hexo init 生成静态页面hexo g 本地启动hexo server现在打开http://localhost:4000就可以访问了配置GitHub 建立Repository建立与用户名对应的仓库，仓库名必须为github的用户名.github.io，比如我">
-<meta name="twitter:image" content="http://otkonjtde.bkt.clouddn.com/salt-lake.jpg">
+<meta name="twitter:title" content="Categories">
     
 
     
@@ -213,184 +207,14 @@
 </aside>
 
             
-            <section id="main"><article id="post-搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            
-	
-		<img src="http://otkonjtde.bkt.clouddn.com/salt-lake.jpg" class="article-banner" />
-	
-
-
-
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-            搭建博客
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/23/搭建博客/">
-            <time datetime="2017-07-23T14:59:22.000Z" itemprop="datePublished">2017-07-23</time>
-        </a>
+            <section id="main"><section class="layout-wrap">
+    <div class="layout-title">
+        <span>Categories</span>
     </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Hexo/">Hexo</a>
+    <div class="layout-wrap-inner list-categories">
+        
     </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
-<li>Node.js</li>
-</ul>
-<p><code>brew install node</code></p>
-<ul>
-<li>Git</li>
-</ul>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><ul>
-<li><code>npm install -g hexo</code></li>
-<li>初始化<br><code>hexo init</code></li>
-<li>生成静态页面<br><code>hexo g</code></li>
-<li>本地启动<br><code>hexo server</code><br>现在打开<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>就可以访问了<h3 id="配置GitHub"><a href="#配置GitHub" class="headerlink" title="配置GitHub"></a>配置GitHub</h3></li>
-<li>建立Repository<br>建立与用户名对应的仓库，仓库名必须为github的用户名.github.io，比如我的用户名是alexkie007,则仓库名为alexkie007.github.io</li>
-<li><p>修改配置文件<code>/Blog/_config.yml</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 最下面</div><div class="line">deploy:</div><div class="line">    type: git</div><div class="line">    repo: https://github.com/leopardpan/leopardpan.github.io.git</div><div class="line">    branch: master</div><div class="line">然后执行命令</div><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-</li>
-<li><p>部署<br><code>hexo d</code></p>
-<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim Blog/themes/theme_name/_config.yml</div><div class="line">修改图像avatar: 图片地址</div><div class="line">vim Blog/_config.yml</div><div class="line">修改名称author:於杰</div><div class="line">themes:icarus</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-<h3 id="常用链接"><a href="#常用链接" class="headerlink" title="常用链接"></a>常用链接</h3><p><a href="https://github.com/hexojs/awesome-hexo" target="_blank" rel="external">awesome-hexo</a><br><a href="https://hexo.io/themes/" target="_blank" rel="external">主题列表</a><br>···</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5hk7k5y0000nxscgf8ve4sp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/07/23/搭建博客/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/23/搭建博客/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-    
-        <a href="/2017/07/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Hello World</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-        <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-</section>
-    
-
-</section>
+</section></section>
             
                 
 <aside id="sidebar">
@@ -507,9 +331,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://yoursite.com/2017/07/23/搭建博客/';
+            this.page.url = 'http://yoursite.com/categories/index.html';
         
-        this.page.identifier = '搭建博客';
+        this.page.identifier = 'undefined';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
