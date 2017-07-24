@@ -154,11 +154,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                2
+                3
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                1
+                2
                 <span>标签</span>
             </div>
         </div>
@@ -208,6 +208,150 @@
 
             
             <section id="main">
+    <article id="post-Rails环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/24/Rails环境搭建/">Rails环境搭建</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/24/Rails环境搭建/">
+            <time datetime="2017-07-24T05:55:04.000Z" itemprop="datePublished">2017-07-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/rails/">rails</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="1-安装Xcode"><a href="#1-安装Xcode" class="headerlink" title="1.安装Xcode"></a>1.安装Xcode</h2><p>在AppStore里面搜索Xcode并进行安装</p>
+<h2 id="2-安装homebrew"><a href="#2-安装homebrew" class="headerlink" title="2.安装homebrew"></a>2.安装homebrew</h2><ul>
+<li>在终端里输入<br><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code><h2 id="3-安装Git"><a href="#3-安装Git" class="headerlink" title="3.安装Git"></a>3.安装Git</h2><code>brew install git</code></li>
+</ul>
+<h2 id="4-安装ImageMagick"><a href="#4-安装ImageMagick" class="headerlink" title="4.安装ImageMagick"></a>4.安装ImageMagick</h2><ul>
+<li>ImageMagick是专门处理图片的库<br><code>brew install imagemagick</code></li>
+</ul>
+<h2 id="5-安装数据库"><a href="#5-安装数据库" class="headerlink" title="5.安装数据库"></a>5.安装数据库</h2><ul>
+<li>mysql<br><code>brew install mysql</code></li>
+<li>postgresql<br><code>brew install postgresql
+brew service start postgresql 确保下次开机自动启动</code></li>
+</ul>
+<h2 id="6-安装RVM"><a href="#6-安装RVM" class="headerlink" title="6.安装RVM"></a>6.安装RVM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\curl -sSL https://get.rvm.io | bash -s stable</div><div class="line">source ~/.rvm/scripts/rvm</div><div class="line">brew install libxml2</div></pre></td></tr></table></figure>
+<h2 id="7-安装ruby"><a href="#7-安装ruby" class="headerlink" title="7.安装ruby"></a>7.安装ruby</h2><p><code>rvm install 2.3.3
+rvm use 2.3.1 --default</code></p>
+<h2 id="8-安装Rails"><a href="#8-安装Rails" class="headerlink" title="8.安装Rails"></a>8.安装Rails</h2><p><code>gem install rails</code></p>
+<h2 id="9-创建rails-应用"><a href="#9-创建rails-应用" class="headerlink" title="9.创建rails 应用"></a>9.创建rails 应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">rails new app_name </div><div class="line">可以添加参数</div><div class="line">--skip-bundle  跳过bundle install 过程 </div><div class="line">-d=mysql2   设置数据库</div><div class="line">设置source https://gems.ruby-china.org</div></pre></td></tr></table></figure>
+<h2 id="10-启动Rails应用"><a href="#10-启动Rails应用" class="headerlink" title="10.启动Rails应用"></a>10.启动Rails应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bundle install </div><div class="line">rails s</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5htobej0000bgsc6mfw4ta7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/07/24/Rails环境搭建/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/24/Rails环境搭建/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -294,7 +438,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5hni43p00013ssc0g4kpazw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5htobep0001bgscr5v58h2u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -424,7 +568,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5hni43k00003ssczk2vyq8m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5htobet0003bgsc9e7rudra" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -516,6 +660,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/07/24/Rails环境搭建/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/24/Rails环境搭建/" class="title">Rails环境搭建</a></p>
+                            <p class="item-date"><time datetime="2017-07-24T05:55:04.000Z" itemprop="datePublished">2017-07-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/23/搭建博客/" class="thumbnail">
     
     
@@ -562,7 +725,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -571,7 +734,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -580,7 +743,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a>
+            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
         </div>
     </div>
 
