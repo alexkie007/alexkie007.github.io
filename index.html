@@ -154,11 +154,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                6
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                2
+                5
                 <span>标签</span>
             </div>
         </div>
@@ -208,6 +208,463 @@
 
             
             <section id="main">
+    <article id="post-Rails一对多" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/07/25/Rails一对多/" itemprop="url">
+            <img src="http://otkonjtde.bkt.clouddn.com/HNCK2206.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/25/Rails一对多/">Rails中Model的关系</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/25/Rails一对多/">
+            <time datetime="2017-07-25T13:28:05.000Z" itemprop="datePublished">2017-07-25</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Rails/">Rails</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><h3 id="建立Group-Post-User三者关系"><a href="#建立Group-Post-User三者关系" class="headerlink" title="建立Group/Post/User三者关系"></a>建立Group/Post/User三者关系</h3><ul>
+<li>Model</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Group &lt; ApplicationRecord</div><div class="line">  belongs_to :user</div><div class="line">  has_many :posts</div><div class="line">  validates :title, presence: true</div><div class="line">end</div><div class="line"></div><div class="line">class User &lt; ApplicationRecord</div><div class="line">  # Include default devise modules. Others available are:</div><div class="line"></div><div class="line">  # :confirmable, :lockable, :timeoutable and :omniauthable</div><div class="line"></div><div class="line">  devise :database_authenticatable, :registerable,</div><div class="line">         :recoverable, :rememberable, :trackable, :validatable</div><div class="line"></div><div class="line">  has_many :groups</div><div class="line">  has_many :posts</div><div class="line">end</div><div class="line"></div><div class="line">class Post &lt; ApplicationRecord</div><div class="line">  belongs_to :user</div><div class="line">  belongs_to :group</div><div class="line">end</div></pre></td></tr></table></figure>
+<ul>
+<li><p>Route</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resources :groups do</div><div class="line">    resources :posts</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>posts/new.html.erb</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;h2 class=&quot;text-center&quot;&gt;新增文章&lt;/h2&gt;</div><div class="line">&lt;div class=&quot;col-md-4 col-md-offset-4&quot;&gt;</div><div class="line">  &lt;%= simple_form_for [@group,@post] do |f| %&gt;</div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">      &lt;%= f.input :content, input_html: &#123; class: &quot;form-control&quot;&#125; %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;form-actions&quot;&gt;</div><div class="line">      &lt;%= f.submit &quot;Submit&quot;, disable_with: &quot;Submiting...&quot;, class: &quot;btn btn-primary&quot;%&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;% end %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>rank</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def show</div><div class="line">    @group = Group.find(params[:id])</div><div class="line">    @posts = @group.posts.order(&quot;created_at DESC&quot;)</div><div class="line">end</div><div class="line">更好的写法</div><div class="line">models/post.rb</div><div class="line">scope :recent, -&gt;&#123;order(&quot;created_at DESC&quot;)&#125;</div><div class="line">controllers/groups_controller.rb</div><div class="line">@posts = @group.posts.recent</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">rails g model group_relationship group_id:integer user_id:integer</div><div class="line"></div><div class="line">models/user.rb</div><div class="line">    has_many :group_relationships</div><div class="line">    has_many :participated, :through =&gt; :group_relationships</div><div class="line">    def is_member_of?(group)</div><div class="line">        participated_groups.include?(group)</div><div class="line">    end</div><div class="line">    </div><div class="line">models/group_relationships.rb</div><div class="line">    belongs_to :group</div><div class="line">    belongs_to :user </div><div class="line">     </div><div class="line">models/group.rb</div><div class="line">   has_many :group_relationships</div><div class="line">   has_many :participated_groups, :through =&gt; :group_relationships, :source =&gt; :group</div><div class="line">   ## 判断是否属于该group</div><div class="line">   def is_member_of?(group)</div><div class="line">      participated_groups.include?(group)</div><div class="line">   end</div><div class="line">   ## 加入group</div><div class="line">   def join!(group)</div><div class="line">     participated_groups &lt;&lt; group</div><div class="line">     #code</div><div class="line">   end</div><div class="line">   ## 退出group</div><div class="line">   def quit!(group)</div><div class="line">     participated_groups.delete(group)</div><div class="line">     #code</div><div class="line">   end</div><div class="line">   </div><div class="line">controllers/group_controller.rb</div><div class="line">  def join</div><div class="line">    @group = Group.find(params[:id])</div><div class="line">    if !current_user.is_member_of?(@group)</div><div class="line">      current_user.join!(@group)</div><div class="line">       flash[:notice] = &quot;加入本讨论版成功！&quot;</div><div class="line">    else</div><div class="line">      flash[:warning] = &quot;你已经是本讨论版成员了！&quot;</div><div class="line">    end</div><div class="line">    redirect_to group_path(@group)</div><div class="line">  end</div><div class="line"></div><div class="line">  def quit</div><div class="line">    @group = Group.find(params[:id])</div><div class="line"></div><div class="line">    if current_user.is_member_of?(@group)</div><div class="line">      current_user.quit!(@group)</div><div class="line">      flash[:alert] = &quot;已退出本讨论版！&quot;</div><div class="line">    else</div><div class="line">      flash[:warning] = &quot;你不是本讨论版成员，怎么退出&quot;</div><div class="line">    end</div><div class="line"></div><div class="line">    redirect_to group_path(@group)</div><div class="line">  end</div><div class="line">  </div><div class="line">  routes.rb</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/07/25/Rails一对多/" data-id="cj5vsee0b0001i7scykx1nwyv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/07/25/Rails一对多/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/25/Rails一对多/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Devise打造登陆功能" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/07/24/Devise打造登陆功能/" itemprop="url">
+            <img src="http://otkonjtde.bkt.clouddn.com/HNCK8951.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/24/Devise打造登陆功能/">devise打造登陆功能</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/24/Devise打造登陆功能/">
+            <time datetime="2017-07-24T09:11:15.000Z" itemprop="datePublished">2017-07-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Rails-gems/">Rails, gems</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="安装登陆系统"><a href="#安装登陆系统" class="headerlink" title="安装登陆系统"></a>安装登陆系统</h2><p><code>gem devise</code></p>
+<h2 id="产生必要文件"><a href="#产生必要文件" class="headerlink" title="产生必要文件"></a>产生必要文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">rails g devise:install</div><div class="line">rails g devise user</div><div class="line">rake db:migrate</div><div class="line"></div><div class="line">在需要用户登录的Controller</div><div class="line">before_action :authenticate_user! , only: [:new,:create,:edit, :update, :destroy]</div><div class="line"></div><div class="line">          &lt;% if !current_user %&gt;</div><div class="line">           &lt;li&gt;&lt;%= link_to(&quot;注册&quot;, new_user_registration_path) %&gt; &lt;/li&gt;</div><div class="line">             &lt;li&gt;&lt;%= link_to(&quot;登录&quot;, new_user_session_path) %&gt;&lt;/li&gt;</div><div class="line">           &lt;% else %&gt;</div><div class="line">             &lt;li class=&quot;dropdown&quot;&gt;</div><div class="line">               &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;</div><div class="line">                   Hi!, &lt;%= current_user.email %&gt;</div><div class="line">                   &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;</div><div class="line">               &lt;/a&gt;</div><div class="line">               &lt;ul class=&quot;dropdown-menu&quot;&gt;</div><div class="line">                   &lt;li&gt; &lt;%= link_to(&quot;退出&quot;, destroy_user_session_path, method: :delete) %&gt; &lt;/li&gt;</div><div class="line">               &lt;/ul&gt;</div><div class="line">             &lt;/li&gt;</div><div class="line">           &lt;% end %&gt;</div><div class="line">        &lt;/ul&gt;</div><div class="line">        </div><div class="line">用户和Model关联</div><div class="line">def change</div><div class="line">    add_column :groups ,:user_id, :integer</div><div class="line">end  </div><div class="line"></div><div class="line">不是model的主人没有权限进行修改</div><div class="line">@group = Group.find(params[:id])</div><div class="line">if current_user != @group.user</div><div class="line"> redirect_to root_path, alert: &quot;You have no permission.&quot;</div><div class="line">end</div></pre></td></tr></table></figure>
+<h2 id="修改使用用户名登陆"><a href="#修改使用用户名登陆" class="headerlink" title="修改使用用户名登陆"></a>修改使用用户名登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">rails g devise user</div><div class="line"></div><div class="line">config/initialzers/devise.rb</div><div class="line">config.authentication_keys = [ :username ]  </div><div class="line"></div><div class="line">application_controller.rb</div><div class="line">before_action :configure_permitted_parameters, if: :devise_controller?  </div><div class="line">  </div><div class="line">  protected  </div><div class="line">  </div><div class="line">  def configure_permitted_parameters  </div><div class="line">    devise_parameter_sanitizer.for(:sign_up) &#123; |u| u.permit(:username, :password, :password_confirmation, :remember_me) &#125;  </div><div class="line">    devise_parameter_sanitizer.for(:sign_in) &#123; |u| u.permit(:username, :password, :remember_me) &#125;  </div><div class="line">    devise_parameter_sanitizer.for(:account_update) &#123; |u| u.permit(:username, :password, :password_confirmation, :current_password) &#125;  </div><div class="line">  end  </div><div class="line">  </div><div class="line">  注册时如果出现email can&apos;t be blank</div><div class="line">  models/user.rb</div><div class="line">  def email_required?  </div><div class="line">    false  </div><div class="line">  end </div><div class="line">  </div><div class="line">  rails g migration remove_index</div><div class="line">  remove_index :users, :column=&gt;:email</div></pre></td></tr></table></figure>
+<h2 id="可参考博客"><a href="#可参考博客" class="headerlink" title="可参考博客"></a>可参考博客</h2><p>-<a href="http://blog.csdn.net/hacky_way/article/details/9119839" target="_blank" rel="external">Rails使用Devise验证用户</a><br>-<a href="http://www.jianshu.com/p/8dfff067197d" target="_blank" rel="external">Devise使用指南</a><br>-<a href="http://blog.csdn.net/ysc6688/article/details/46391503" target="_blank" rel="external">rails使用devise验证</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/07/24/Devise打造登陆功能/" data-id="cj5vsee070000i7scnkhl6fyl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/07/24/Devise打造登陆功能/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/24/Devise打造登陆功能/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Rails常用插件" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/07/24/Rails常用插件/" itemprop="url">
+            <img src="http://otkonjtde.bkt.clouddn.com/P1010052.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/24/Rails常用插件/">Rails常用插件</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/24/Rails常用插件/">
+            <time datetime="2017-07-24T09:10:53.000Z" itemprop="datePublished">2017-07-24</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Rails，Gems/">Rails，Gems</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="前端插件"><a href="#前端插件" class="headerlink" title="前端插件"></a>前端插件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gem &apos;sassc-rails&apos;</div><div class="line">gem &apos;bootstrap-sass&apos;</div><div class="line">gem &apos;font-awesome-rails&apos;</div><div class="line">gem &apos;jquery-ui-rails&apos;</div><div class="line">gem &apos;amazeui&apos;, :git =&gt; &apos;git://github.com/zheye-dev/amazeui-rails.git&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用bootstarp和fontawesome<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss`</div><div class="line">并在里面加上</div><div class="line">@import &quot;bootstrap-sprockets&quot;;</div><div class="line">@import &quot;bootstrap&quot;;</div><div class="line">在application.js</div><div class="line">//= require bootstrap-sprockets</div><div class="line">//= require bootstrap/alert</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Console展示"><a href="#Console展示" class="headerlink" title="Console展示"></a>Console展示</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem &apos;awesome_rails_console‘</div></pre></td></tr></table></figure>
+<h2 id="实用插件"><a href="#实用插件" class="headerlink" title="实用插件"></a>实用插件</h2><ul>
+<li><p>‘simple_form’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gem &apos;simple_form&apos;</div><div class="line">rails g simple_form:install --bootstrap</div><div class="line">eg:自带错误提示</div><div class="line">&lt;%= simple_form_for @group do |f| %&gt;</div><div class="line"> &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">   &lt;%= f.input :title, input_html:&#123;class:&quot;form-control&quot;&#125; %&gt;</div><div class="line">   &lt;%= f.input :description, input_html:&#123;class:&quot;form-control&quot;&#125; %&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line"> &lt;%= f.submit &quot;Submit&quot;, class: &quot;btn btn-primary&quot;,data:&#123;disable_with:&quot;Submiting...&quot;&#125;%&gt;</div><div class="line">&lt;% end %&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>devise</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem &apos;devise</div></pre></td></tr></table></figure>
+</li>
+<li><p>翻页插件</p>
+<ul>
+<li><p>‘will_paginate’  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    @posts = @group.posts.recent.paginate(:page =&gt; params[:page], :per_page =&gt; 5)</div><div class="line">&lt;div class=&quot;text-center&quot;&gt;</div><div class="line">  &lt;%= will_paginate @posts %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>‘kaminari’</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><pre><code>- &apos;carrierwave&apos;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">gem &apos;carrierwave&apos;</div><div class="line"></div><div class="line">rails g migration add_attachment_to_resume</div><div class="line">add_column :resumes, :attachment, :string</div><div class="line"></div><div class="line">models/resume.rb</div><div class="line">mount_uploader :attachment, AttachmentUploader</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">rails g uploader attachment</div><div class="line"></div><div class="line">controllers/resume_controllers.rb</div><div class="line">def resume_params:</div><div class="line">    params.require(:resume).permit(:content, :attachment)</div><div class="line">end</div></pre></td></tr></table></figure>
+
+
+## 图片网址
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">https://picjumbo.com</div><div class="line">https://unsplash.com</div><div class="line">https://pixabay.com</div></pre></td></tr></table></figure>
+</code></pre>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/07/24/Rails常用插件/" data-id="cj5vsee0g0003i7sctgtxchw8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/07/24/Rails常用插件/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/24/Rails常用插件/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Rails环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -284,7 +741,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5httzvu0000dfsckvyy4gzd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5vsee0m0005i7sckrrneld2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -448,7 +905,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5httzvz0001dfscbm79x7qq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5vsee0j0004i7scdnuss78l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -578,7 +1035,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5httzw70003dfsch82fioru" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5vsee0n0008i7scuvdym85z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -670,6 +1127,63 @@ rvm use 2.3.1 --default</code></p>
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/07/25/Rails一对多/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/HNCK2206.jpg)" alt="Rails中Model的关系" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/25/Rails一对多/" class="title">Rails中Model的关系</a></p>
+                            <p class="item-date"><time datetime="2017-07-25T13:28:05.000Z" itemprop="datePublished">2017-07-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/24/Devise打造登陆功能/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/HNCK8951.jpg)" alt="devise打造登陆功能" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/24/Devise打造登陆功能/" class="title">devise打造登陆功能</a></p>
+                            <p class="item-date"><time datetime="2017-07-24T09:11:15.000Z" itemprop="datePublished">2017-07-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/24/Rails常用插件/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/P1010052.jpg)" alt="Rails常用插件" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/24/Rails常用插件/" class="title">Rails常用插件</a></p>
+                            <p class="item-date"><time datetime="2017-07-24T09:10:53.000Z" itemprop="datePublished">2017-07-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/24/Rails环境搭建/" class="thumbnail">
     
     
@@ -705,25 +1219,6 @@ rvm use 2.3.1 --default</code></p>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/23/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/23/hello-world/" class="title">Hello World</a></p>
-                            <p class="item-date"><time datetime="2017-07-23T14:15:57.000Z" itemprop="datePublished">2017-07-23</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -735,7 +1230,7 @@ rvm use 2.3.1 --default</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -744,7 +1239,7 @@ rvm use 2.3.1 --default</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails-gems/">Rails, gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails，Gems/">Rails，Gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -753,7 +1248,7 @@ rvm use 2.3.1 --default</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
+            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Rails/" style="font-size: 10px;">Rails</a> <a href="/tags/Rails-gems/" style="font-size: 10px;">Rails, gems</a> <a href="/tags/Rails，Gems/" style="font-size: 10px;">Rails，Gems</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
         </div>
     </div>
 

@@ -3,19 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Hello World | 技术栈</title>
+    <title>Rails中Model的关系 | 技术栈</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="一对多建立Group/Post/User三者关系 Model  12345678910111213141516171819202122class Group &amp;lt; ApplicationRecord  belongs_to :user  has_many :posts  validates :title, presence: trueendclass User &amp;lt; Application">
+<meta name="keywords" content="Rails">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/07/23/hello-world/index.html">
+<meta property="og:title" content="Rails中Model的关系">
+<meta property="og:url" content="http://yoursite.com/2017/07/25/Rails一对多/index.html">
 <meta property="og:site_name" content="技术栈">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="一对多建立Group/Post/User三者关系 Model  12345678910111213141516171819202122class Group &amp;lt; ApplicationRecord  belongs_to :user  has_many :posts  validates :title, presence: trueendclass User &amp;lt; Application">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-07-23T14:15:57.000Z">
+<meta property="og:image" content="http://otkonjtde.bkt.clouddn.com/HNCK2206.jpg">
+<meta property="og:updated_time" content="2017-08-03T01:52:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Rails中Model的关系">
+<meta name="twitter:description" content="一对多建立Group/Post/User三者关系 Model  12345678910111213141516171819202122class Group &amp;lt; ApplicationRecord  belongs_to :user  has_many :posts  validates :title, presence: trueendclass User &amp;lt; Application">
+<meta name="twitter:image" content="http://otkonjtde.bkt.clouddn.com/HNCK2206.jpg">
     
 
     
@@ -211,15 +214,23 @@
 </aside>
 
             
-            <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Rails一对多" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
+        
+            
+	
+		<img src="http://otkonjtde.bkt.clouddn.com/HNCK2206.jpg" class="article-banner" />
+	
+
+
+
         
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-            Hello World
+            Rails中Model的关系
         </h1>
     
 
@@ -228,14 +239,19 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/23/hello-world/">
-            <time datetime="2017-07-23T14:15:57.000Z" itemprop="datePublished">2017-07-23</time>
+        <a href="/2017/07/25/Rails一对多/">
+            <time datetime="2017-07-25T13:28:05.000Z" itemprop="datePublished">2017-07-25</time>
         </a>
     </div>
 
 
                         
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Rails/">Rails</a>
+    </div>
+
                     </div>
                 
             </header>
@@ -244,15 +260,22 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><h3 id="建立Group-Post-User三者关系"><a href="#建立Group-Post-User三者关系" class="headerlink" title="建立Group/Post/User三者关系"></a>建立Group/Post/User三者关系</h3><ul>
+<li>Model</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Group &lt; ApplicationRecord</div><div class="line">  belongs_to :user</div><div class="line">  has_many :posts</div><div class="line">  validates :title, presence: true</div><div class="line">end</div><div class="line"></div><div class="line">class User &lt; ApplicationRecord</div><div class="line">  # Include default devise modules. Others available are:</div><div class="line"></div><div class="line">  # :confirmable, :lockable, :timeoutable and :omniauthable</div><div class="line"></div><div class="line">  devise :database_authenticatable, :registerable,</div><div class="line">         :recoverable, :rememberable, :trackable, :validatable</div><div class="line"></div><div class="line">  has_many :groups</div><div class="line">  has_many :posts</div><div class="line">end</div><div class="line"></div><div class="line">class Post &lt; ApplicationRecord</div><div class="line">  belongs_to :user</div><div class="line">  belongs_to :group</div><div class="line">end</div></pre></td></tr></table></figure>
+<ul>
+<li><p>Route</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resources :groups do</div><div class="line">    resources :posts</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>posts/new.html.erb</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;h2 class=&quot;text-center&quot;&gt;新增文章&lt;/h2&gt;</div><div class="line">&lt;div class=&quot;col-md-4 col-md-offset-4&quot;&gt;</div><div class="line">  &lt;%= simple_form_for [@group,@post] do |f| %&gt;</div><div class="line">    &lt;div class=&quot;form-group&quot;&gt;</div><div class="line">      &lt;%= f.input :content, input_html: &#123; class: &quot;form-control&quot;&#125; %&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;form-actions&quot;&gt;</div><div class="line">      &lt;%= f.submit &quot;Submit&quot;, disable_with: &quot;Submiting...&quot;, class: &quot;btn btn-primary&quot;%&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;% end %&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>rank</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def show</div><div class="line">    @group = Group.find(params[:id])</div><div class="line">    @posts = @group.posts.order(&quot;created_at DESC&quot;)</div><div class="line">end</div><div class="line">更好的写法</div><div class="line">models/post.rb</div><div class="line">scope :recent, -&gt;&#123;order(&quot;created_at DESC&quot;)&#125;</div><div class="line">controllers/groups_controller.rb</div><div class="line">@posts = @group.posts.recent</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">rails g model group_relationship group_id:integer user_id:integer</div><div class="line"></div><div class="line">models/user.rb</div><div class="line">    has_many :group_relationships</div><div class="line">    has_many :participated, :through =&gt; :group_relationships</div><div class="line">    def is_member_of?(group)</div><div class="line">        participated_groups.include?(group)</div><div class="line">    end</div><div class="line">    </div><div class="line">models/group_relationships.rb</div><div class="line">    belongs_to :group</div><div class="line">    belongs_to :user </div><div class="line">     </div><div class="line">models/group.rb</div><div class="line">   has_many :group_relationships</div><div class="line">   has_many :participated_groups, :through =&gt; :group_relationships, :source =&gt; :group</div><div class="line">   ## 判断是否属于该group</div><div class="line">   def is_member_of?(group)</div><div class="line">      participated_groups.include?(group)</div><div class="line">   end</div><div class="line">   ## 加入group</div><div class="line">   def join!(group)</div><div class="line">     participated_groups &lt;&lt; group</div><div class="line">     #code</div><div class="line">   end</div><div class="line">   ## 退出group</div><div class="line">   def quit!(group)</div><div class="line">     participated_groups.delete(group)</div><div class="line">     #code</div><div class="line">   end</div><div class="line">   </div><div class="line">controllers/group_controller.rb</div><div class="line">  def join</div><div class="line">    @group = Group.find(params[:id])</div><div class="line">    if !current_user.is_member_of?(@group)</div><div class="line">      current_user.join!(@group)</div><div class="line">       flash[:notice] = &quot;加入本讨论版成功！&quot;</div><div class="line">    else</div><div class="line">      flash[:warning] = &quot;你已经是本讨论版成员了！&quot;</div><div class="line">    end</div><div class="line">    redirect_to group_path(@group)</div><div class="line">  end</div><div class="line"></div><div class="line">  def quit</div><div class="line">    @group = Group.find(params[:id])</div><div class="line"></div><div class="line">    if current_user.is_member_of?(@group)</div><div class="line">      current_user.quit!(@group)</div><div class="line">      flash[:alert] = &quot;已退出本讨论版！&quot;</div><div class="line">    else</div><div class="line">      flash[:warning] = &quot;你不是本讨论版成员，怎么退出&quot;</div><div class="line">    end</div><div class="line"></div><div class="line">    redirect_to group_path(@group)</div><div class="line">  end</div><div class="line">  </div><div class="line">  routes.rb</div></pre></td></tr></table></figure>
 
         
         </div>
@@ -263,7 +286,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5vsee0n0008i7scuvdym85z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/25/Rails一对多/" data-id="cj5vsee0b0001i7scykx1nwyv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -331,7 +354,7 @@
 
             
     
-        <a href="http://yoursite.com/2017/07/23/hello-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/23/hello-world/">评论</a>
+        <a href="http://yoursite.com/2017/07/25/Rails一对多/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/25/Rails一对多/">评论</a>
     
 
         </footer>
@@ -340,15 +363,11 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/07/23/搭建博客/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    搭建博客
-                
-            </div>
-        </a>
     
+        <a href="/2017/07/24/Devise打造登陆功能/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">devise打造登陆功能</div>
+        </a>
     
 </nav>
 
@@ -540,9 +559,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://yoursite.com/2017/07/23/hello-world/';
+            this.page.url = 'http://yoursite.com/2017/07/25/Rails一对多/';
         
-        this.page.identifier = 'hello-world';
+        this.page.identifier = 'Rails一对多';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
