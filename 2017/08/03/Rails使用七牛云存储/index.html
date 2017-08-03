@@ -5,19 +5,19 @@
     
     <title>Rails使用七牛云存储 | 技术栈</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云12345678910111213141516171819202122232425262728293031323334353637383940414243Gemfilegem `ca">
+    <meta name="description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云1234567891011121314151617181920212223242526272829303132333435363738394041424344Gemfilegem `">
 <meta name="keywords" content="Rails">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rails使用七牛云存储">
 <meta property="og:url" content="http://yoursite.com/2017/08/03/Rails使用七牛云存储/index.html">
 <meta property="og:site_name" content="技术栈">
-<meta property="og:description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云12345678910111213141516171819202122232425262728293031323334353637383940414243Gemfilegem `ca">
+<meta property="og:description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云1234567891011121314151617181920212223242526272829303132333435363738394041424344Gemfilegem `">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg">
-<meta property="og:updated_time" content="2017-08-03T02:14:53.000Z">
+<meta property="og:updated_time" content="2017-08-03T02:15:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rails使用七牛云存储">
-<meta name="twitter:description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云12345678910111213141516171819202122232425262728293031323334353637383940414243Gemfilegem `ca">
+<meta name="twitter:description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云1234567891011121314151617181920212223242526272829303132333435363738394041424344Gemfilegem `">
 <meta name="twitter:image" content="http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg">
     
 
@@ -161,11 +161,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                7
+                8
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                5
+                2
                 <span>标签</span>
             </div>
         </div>
@@ -262,7 +262,7 @@
             
             <h2 id="注册七牛云"><a href="#注册七牛云" class="headerlink" title="注册七牛云"></a>注册七牛云</h2><p>注册后，在个人面板-&gt;密钥管理 可以查看AccessKey/SecretKey</p>
 <h2 id="创建存储空间"><a href="#创建存储空间" class="headerlink" title="创建存储空间"></a>创建存储空间</h2><p>对象存储<br>存储空间名称是 qiniu bucket<br>测试域名是 qiniu bucket domain</p>
-<h2 id="设置七牛云"><a href="#设置七牛云" class="headerlink" title="设置七牛云"></a>设置七牛云</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">Gemfile</div><div class="line">gem `carrierwave-qiniu`</div><div class="line">gem &apos;qiniu-rs`</div><div class="line"></div><div class="line">touch config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">CarrierWave.configure do |config|</div><div class="line">  config.storage             = :qiniu</div><div class="line">  config.qiniu_access_key    = ENV[&quot;qiniu_access_key&quot;]</div><div class="line">  config.qiniu_secret_key    = ENV[&quot;qiniu_secret_key&quot;]</div><div class="line">  config.qiniu_bucket        = ENV[&quot;qiniu_bucket&quot;]</div><div class="line">  config.qiniu_bucket_domain = ENV[&quot;qiniu_bucket_domain&quot;]</div><div class="line">  config.qiniu_block_size    = 4*1024*1024</div><div class="line">  config.qiniu_protocol      = &quot;http&quot;</div><div class="line">  config.qiniu_up_host       = &quot;http://up.qiniug.com&quot;  #选择不同的区域时，&quot;up.qiniug.com&quot;</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">app/uploders/image_uploader.rb</div><div class="line"></div><div class="line">storage :qiniu</div><div class="line"></div><div class="line">production:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> development:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div></pre></td></tr></table></figure>
+<h2 id="设置七牛云"><a href="#设置七牛云" class="headerlink" title="设置七牛云"></a>设置七牛云</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">Gemfile</div><div class="line">gem `carrierwave-qiniu`</div><div class="line">gem &apos;qiniu-rs`</div><div class="line"></div><div class="line">touch config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">CarrierWave.configure do |config|</div><div class="line">  config.storage             = :qiniu</div><div class="line">  config.qiniu_access_key    = ENV[&quot;qiniu_access_key&quot;]</div><div class="line">  config.qiniu_secret_key    = ENV[&quot;qiniu_secret_key&quot;]</div><div class="line">  config.qiniu_bucket        = ENV[&quot;qiniu_bucket&quot;]</div><div class="line">  config.qiniu_bucket_domain = ENV[&quot;qiniu_bucket_domain&quot;]</div><div class="line">  config.qiniu_block_size    = 4*1024*1024</div><div class="line">  config.qiniu_protocol      = &quot;http&quot;</div><div class="line">  config.qiniu_up_host       = &quot;http://up.qiniug.com&quot;  #选择不同的区域时，&quot;up.qiniug.com&quot;</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">app/uploders/image_uploader.rb</div><div class="line"></div><div class="line">storage :qiniu</div><div class="line"></div><div class="line">config/application.yml</div><div class="line">production:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> development:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div></pre></td></tr></table></figure>
 
         
         </div>
@@ -273,7 +273,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/" data-id="cj5vt70m10003u8sc7cxnflkb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/" data-id="cj5vtq8ia0003xmsc76yxbhxc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -350,6 +350,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2017/08/03/使用SendCloud发送邮件/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    使用SendCloud发送邮件
+                
+            </div>
+        </a>
+    
     
         <a href="/2017/07/25/Rails一对多/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
@@ -382,6 +391,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/08/03/使用SendCloud发送邮件/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/HNCK3934.jpg)" alt="使用SendCloud发送邮件" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/08/03/使用SendCloud发送邮件/" class="title">使用SendCloud发送邮件</a></p>
+                            <p class="item-date"><time datetime="2017-08-03T02:16:25.000Z" itemprop="datePublished">2017-08-03</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -459,25 +487,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/24/Rails环境搭建/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/e_bw.jpg)" alt="Rails环境搭建" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/24/Rails环境搭建/" class="title">Rails环境搭建</a></p>
-                            <p class="item-date"><time datetime="2017-07-24T05:55:04.000Z" itemprop="datePublished">2017-07-24</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -489,7 +498,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -498,7 +507,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails-gems/">Rails, gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails，Gems/">Rails，Gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a><span class="tag-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -507,7 +516,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Rails/" style="font-size: 20px;">Rails</a> <a href="/tags/Rails-gems/" style="font-size: 10px;">Rails, gems</a> <a href="/tags/Rails，Gems/" style="font-size: 10px;">Rails，Gems</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
+            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Rails/" style="font-size: 20px;">Rails</a>
         </div>
     </div>
 
