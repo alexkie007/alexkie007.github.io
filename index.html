@@ -258,7 +258,7 @@
             
             <h2 id="注册七牛云"><a href="#注册七牛云" class="headerlink" title="注册七牛云"></a>注册七牛云</h2><p>注册后，在个人面板-&gt;密钥管理 可以查看AccessKey/SecretKey</p>
 <h2 id="创建存储空间"><a href="#创建存储空间" class="headerlink" title="创建存储空间"></a>创建存储空间</h2><p>对象存储<br>存储空间名称是 qiniu bucket<br>测试域名是 qiniu bucket domain</p>
-<h2 id="设置七牛云"><a href="#设置七牛云" class="headerlink" title="设置七牛云"></a>设置七牛云</h2><p><code>Gemfile</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">gem `carrierwave-qiniu`</div><div class="line">gem &apos;qiniu-rs`</div><div class="line"></div><div class="line">touch config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">CarrierWave.configure do |config|</div><div class="line">  config.storage             = :qiniu</div><div class="line">  config.qiniu_access_key    = ENV[&quot;qiniu_access_key&quot;]</div><div class="line">  config.qiniu_secret_key    = ENV[&quot;qiniu_secret_key&quot;]</div><div class="line">  config.qiniu_bucket        = ENV[&quot;qiniu_bucket&quot;]</div><div class="line">  config.qiniu_bucket_domain = ENV[&quot;qiniu_bucket_domain&quot;]</div><div class="line">  config.qiniu_block_size    = 4*1024*1024</div><div class="line">  config.qiniu_protocol      = &quot;http&quot;</div><div class="line">  config.qiniu_up_host       = &quot;http://up.qiniug.com&quot;  #选择不同的区域时，&quot;up.qiniug.com&quot;</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">app/uploders/image_uploader.rb</div><div class="line"></div><div class="line">storage :qiniu</div><div class="line"></div><div class="line">production:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> development:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div></pre></td></tr></table></figure></p>
+<h2 id="设置七牛云"><a href="#设置七牛云" class="headerlink" title="设置七牛云"></a>设置七牛云</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">Gemfile</div><div class="line">gem `carrierwave-qiniu`</div><div class="line">gem &apos;qiniu-rs`</div><div class="line"></div><div class="line">touch config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">CarrierWave.configure do |config|</div><div class="line">  config.storage             = :qiniu</div><div class="line">  config.qiniu_access_key    = ENV[&quot;qiniu_access_key&quot;]</div><div class="line">  config.qiniu_secret_key    = ENV[&quot;qiniu_secret_key&quot;]</div><div class="line">  config.qiniu_bucket        = ENV[&quot;qiniu_bucket&quot;]</div><div class="line">  config.qiniu_bucket_domain = ENV[&quot;qiniu_bucket_domain&quot;]</div><div class="line">  config.qiniu_block_size    = 4*1024*1024</div><div class="line">  config.qiniu_protocol      = &quot;http&quot;</div><div class="line">  config.qiniu_up_host       = &quot;http://up.qiniug.com&quot;  #选择不同的区域时，&quot;up.qiniug.com&quot;</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">app/uploders/image_uploader.rb</div><div class="line"></div><div class="line">storage :qiniu</div><div class="line"></div><div class="line">production:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> development:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div></pre></td></tr></table></figure>
 
         
         </div>
@@ -269,7 +269,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/" data-id="cj5vt5o9i0003smscbvv9ugli" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/" data-id="cj5vt6klk0000tfscuw9tt8vx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -421,7 +421,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/25/Rails一对多/" data-id="cj5vt5o980000smsc5ipdjei4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/25/Rails一对多/" data-id="cj5vt6klp0001tfsck9firk6c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -561,7 +561,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Devise打造登陆功能/" data-id="cj5vt5o9c0001smscxpnxkjwv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Devise打造登陆功能/" data-id="cj5vt6klw0003tfsciqfoiudr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -726,7 +726,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Rails常用插件/" data-id="cj5vt5o9k0004smsco44s7yk5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Rails常用插件/" data-id="cj5vt6kly0004tfscbk233s7x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -880,7 +880,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5vt5o9n0005smscglsyqv3k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5vt6km00005tfsciv0ao3by" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1044,7 +1044,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5vt5o9s0009smsc1zj3e3b0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5vt6km60009tfsc5o8g8ibh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1174,7 +1174,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5vt5o9q0008smscs6bns2iz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5vt6km30008tfscoacjtl6t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
