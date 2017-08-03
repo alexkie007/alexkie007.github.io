@@ -3,15 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签: rails | 技术栈</title>
+    <title>Rails使用七牛云存储 | 技术栈</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="技术栈">
-<meta property="og:url" content="http://yoursite.com/tags/rails/index.html">
+    <meta name="description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云Gemfile123456789101112131415161718192021222324252627282930313233343536373839404142gem `carr">
+<meta name="keywords" content="Rails">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rails使用七牛云存储">
+<meta property="og:url" content="http://yoursite.com/2017/08/03/Rails使用七牛云存储/index.html">
 <meta property="og:site_name" content="技术栈">
+<meta property="og:description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云Gemfile123456789101112131415161718192021222324252627282930313233343536373839404142gem `carr">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg">
+<meta property="og:updated_time" content="2017-08-03T02:13:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术栈">
+<meta name="twitter:title" content="Rails使用七牛云存储">
+<meta name="twitter:description" content="注册七牛云注册后，在个人面板-&amp;gt;密钥管理 可以查看AccessKey/SecretKey 创建存储空间对象存储存储空间名称是 qiniu bucket测试域名是 qiniu bucket domain 设置七牛云Gemfile123456789101112131415161718192021222324252627282930313233343536373839404142gem `carr">
+<meta name="twitter:image" content="http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg">
     
 
     
@@ -207,45 +214,164 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#rails</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-Rails使用七牛云存储" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/07/24/Rails环境搭建/">Rails环境搭建</a>
+        <h1 class="article-title" itemprop="name">
+            Rails使用七牛云存储
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/24/Rails环境搭建/">
-            <time datetime="2017-07-24T05:55:04.000Z" itemprop="datePublished">2017-07-24</time>
+        <a href="/2017/08/03/Rails使用七牛云存储/">
+            <time datetime="2017-08-03T01:54:21.000Z" itemprop="datePublished">2017-08-03</time>
         </a>
     </div>
 
 
-                    
-                    
+                        
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/rails/">rails</a>
+        <a class="tag-link" href="/tags/Rails/">Rails</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="注册七牛云"><a href="#注册七牛云" class="headerlink" title="注册七牛云"></a>注册七牛云</h2><p>注册后，在个人面板-&gt;密钥管理 可以查看AccessKey/SecretKey</p>
+<h2 id="创建存储空间"><a href="#创建存储空间" class="headerlink" title="创建存储空间"></a>创建存储空间</h2><p>对象存储<br>存储空间名称是 qiniu bucket<br>测试域名是 qiniu bucket domain</p>
+<h2 id="设置七牛云"><a href="#设置七牛云" class="headerlink" title="设置七牛云"></a>设置七牛云</h2><p><code>Gemfile</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">gem `carrierwave-qiniu`</div><div class="line">gem &apos;qiniu-rs`</div><div class="line"></div><div class="line">touch config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">CarrierWave.configure do |config|</div><div class="line">  config.storage             = :qiniu</div><div class="line">  config.qiniu_access_key    = ENV[&quot;qiniu_access_key&quot;]</div><div class="line">  config.qiniu_secret_key    = ENV[&quot;qiniu_secret_key&quot;]</div><div class="line">  config.qiniu_bucket        = ENV[&quot;qiniu_bucket&quot;]</div><div class="line">  config.qiniu_bucket_domain = ENV[&quot;qiniu_bucket_domain&quot;]</div><div class="line">  config.qiniu_block_size    = 4*1024*1024</div><div class="line">  config.qiniu_protocol      = &quot;http&quot;</div><div class="line">  config.qiniu_up_host       = &quot;http://up.qiniug.com&quot;  #选择不同的区域时，&quot;up.qiniug.com&quot;</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">app/uploders/image_uploader.rb</div><div class="line"></div><div class="line">storage :qiniu</div><div class="line"></div><div class="line">production:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> development:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div></pre></td></tr></table></figure></p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/" data-id="cj5vt58q10001rxsch2or54uq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/08/03/Rails使用七牛云存储/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/07/25/Rails一对多/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Rails中Model的关系</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -420,43 +546,17 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'http://yoursite.com/2017/08/03/Rails使用七牛云存储/';
+        
+        this.page.identifier = 'Rails使用七牛云存储';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
 </script>
-
-
-
-
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
-
-
-
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
-
-    </div>
-</body>
-</html>ript>
 
 
 

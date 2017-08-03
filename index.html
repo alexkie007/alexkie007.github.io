@@ -154,7 +154,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                6
+                7
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -208,6 +208,145 @@
 
             
             <section id="main">
+    <article id="post-Rails使用七牛云存储" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<a href="/2017/08/03/Rails使用七牛云存储/" itemprop="url">
+            <img src="http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg" class="article-banner" />
+        </a>
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/03/Rails使用七牛云存储/">Rails使用七牛云存储</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/03/Rails使用七牛云存储/">
+            <time datetime="2017-08-03T01:54:21.000Z" itemprop="datePublished">2017-08-03</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Rails/">Rails</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="注册七牛云"><a href="#注册七牛云" class="headerlink" title="注册七牛云"></a>注册七牛云</h2><p>注册后，在个人面板-&gt;密钥管理 可以查看AccessKey/SecretKey</p>
+<h2 id="创建存储空间"><a href="#创建存储空间" class="headerlink" title="创建存储空间"></a>创建存储空间</h2><p>对象存储<br>存储空间名称是 qiniu bucket<br>测试域名是 qiniu bucket domain</p>
+<h2 id="设置七牛云"><a href="#设置七牛云" class="headerlink" title="设置七牛云"></a>设置七牛云</h2><p><code>Gemfile</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">gem `carrierwave-qiniu`</div><div class="line">gem &apos;qiniu-rs`</div><div class="line"></div><div class="line">touch config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">config/initializers/carrierwave.rb</div><div class="line"></div><div class="line">CarrierWave.configure do |config|</div><div class="line">  config.storage             = :qiniu</div><div class="line">  config.qiniu_access_key    = ENV[&quot;qiniu_access_key&quot;]</div><div class="line">  config.qiniu_secret_key    = ENV[&quot;qiniu_secret_key&quot;]</div><div class="line">  config.qiniu_bucket        = ENV[&quot;qiniu_bucket&quot;]</div><div class="line">  config.qiniu_bucket_domain = ENV[&quot;qiniu_bucket_domain&quot;]</div><div class="line">  config.qiniu_block_size    = 4*1024*1024</div><div class="line">  config.qiniu_protocol      = &quot;http&quot;</div><div class="line">  config.qiniu_up_host       = &quot;http://up.qiniug.com&quot;  #选择不同的区域时，&quot;up.qiniug.com&quot;</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">app/uploders/image_uploader.rb</div><div class="line"></div><div class="line">storage :qiniu</div><div class="line"></div><div class="line">production:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> development:</div><div class="line">   qiniu_access_key: xxxx  # 你的 qiniu AccessKey</div><div class="line"></div><div class="line">   qiniu_secret_key: xxxx  # 你的 qiniu SecretKey</div><div class="line"></div><div class="line">   qiniu_bucket: xxxx  # 你的 qiniu bucket</div><div class="line"></div><div class="line">   qiniu_bucket_domain: xxxx  # 你的 qiniu bucket domain</div></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/" data-id="cj5vt58q10001rxsch2or54uq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/08/03/Rails使用七牛云存储/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/08/03/Rails使用七牛云存储/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Rails一对多" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -282,7 +421,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/25/Rails一对多/" data-id="cj5vsezwl0000j4scgk5loi0w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/25/Rails一对多/" data-id="cj5vt58pw0000rxsc3hjii36v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -422,7 +561,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Devise打造登陆功能/" data-id="cj5vsezwq0001j4sc3x8mme95" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Devise打造登陆功能/" data-id="cj5vt58q60003rxscmvjfpcrv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -587,7 +726,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Rails常用插件/" data-id="cj5vsezwy0003j4sc3k37gp9p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Rails常用插件/" data-id="cj5vt58q90004rxscebxgf6nc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -741,7 +880,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5vsezx00004j4sc2v0qjnc4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/24/Rails环境搭建/" data-id="cj5vt58qb0005rxsc3fckoqzi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -905,7 +1044,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5vsezx50008j4sc3gb7qhhz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/搭建博客/" data-id="cj5vt58rc000grxscrepsb1a7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1035,7 +1174,7 @@ rvm use 2.3.1 --default</code></p>
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5vsezx20005j4sc25h5viq1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/23/hello-world/" data-id="cj5vt58qj0008rxscjyopvwvh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1127,6 +1266,25 @@ rvm use 2.3.1 --default</code></p>
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2017/08/03/Rails使用七牛云存储/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/HNCK8236.jpg)" alt="Rails使用七牛云存储" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/08/03/Rails使用七牛云存储/" class="title">Rails使用七牛云存储</a></p>
+                            <p class="item-date"><time datetime="2017-08-03T01:54:21.000Z" itemprop="datePublished">2017-08-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2017/07/25/Rails一对多/" class="thumbnail">
     
     
@@ -1200,25 +1358,6 @@ rvm use 2.3.1 --default</code></p>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/07/23/搭建博客/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://otkonjtde.bkt.clouddn.com/salt-lake.jpg)" alt="搭建博客" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/07/23/搭建博客/" class="title">搭建博客</a></p>
-                            <p class="item-date"><time datetime="2017-07-23T14:59:22.000Z" itemprop="datePublished">2017-07-23</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1230,7 +1369,7 @@ rvm use 2.3.1 --default</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -1239,7 +1378,7 @@ rvm use 2.3.1 --default</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails-gems/">Rails, gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails，Gems/">Rails，Gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails/">Rails</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails-gems/">Rails, gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rails，Gems/">Rails，Gems</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1248,7 +1387,7 @@ rvm use 2.3.1 --default</code></p>
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Rails/" style="font-size: 10px;">Rails</a> <a href="/tags/Rails-gems/" style="font-size: 10px;">Rails, gems</a> <a href="/tags/Rails，Gems/" style="font-size: 10px;">Rails，Gems</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
+            <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Rails/" style="font-size: 20px;">Rails</a> <a href="/tags/Rails-gems/" style="font-size: 10px;">Rails, gems</a> <a href="/tags/Rails，Gems/" style="font-size: 10px;">Rails，Gems</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
         </div>
     </div>
 
